@@ -8,10 +8,19 @@ class Players extends Component {
     this.state = {
       players: []
     }
+
+    this.getPlayers = this.getPlayers.bind(this);
   }
 
-  getPlayers () {
-    var url = "http://localhost:4000/api/players";
+  getPlayers (team) {
+    var self = this;
+    // var team = this.props.params.team;
+    console.log("TEAMMMMM: ", team)
+    if (team) {
+      var url = "http://localhost:4000/api/players?filter=club_playing:" + team;
+    } else {
+      var url = "http://localhost:4000/api/players";
+    }
 
     fetch(url, {
       method: 'GET',
@@ -19,19 +28,22 @@ class Players extends Component {
     })
       .then(response => response.json())
       .then((response) => {
-        this.setState({ players: response })
+        console.log("AJAX REQUEST")
+        this.setState({ players: response });
       })
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log("NEXT PROP: ", nextProps);
+    this.getPlayers(nextProps.params.team);
+  }
   componentDidMount() {
-    this.getPlayers();
+    this.getPlayers(this.props.params.team);
   }
 
-  componentWillReceiveProps() {
-    this.getPlayers();
-    console.log("from list");
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
   }
-
 
   update (e) {
     this.setState({ txt: e.target.value })
@@ -60,7 +72,7 @@ class Players extends Component {
           <div className="form-group" style={{ paddingTop: "20px" }}>
             <input onChange={ this.playerFilter.bind(this) } type="text" placeholder="Enter Filter Text" className="form-control"></input>
           </div>
-          <List players={ players } />
+          <List players={ players || [] } />
         </div>
       </div>
     )

@@ -8,6 +8,7 @@ class List extends React.Component {
   }
 
   render () {
+    console.log("RENDER RENDER", this.props.players)
     return (
       <div className="ibox-content">
         <div className="table-responsive">
@@ -25,7 +26,7 @@ class List extends React.Component {
             </thead>
             <tbody>
               { this.props.players.map( player =>
-                <tr>
+                <tr key={player.id}>
                   <td>
                     <Link to={ "/player/" + player.id }><i className="fa fa-users"></i> <span className="nav-label">{ player.name } </span></Link>
                   </td>
