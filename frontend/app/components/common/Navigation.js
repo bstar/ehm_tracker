@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Dropdown } from 'react-bootstrap';
-import { Link, Location } from 'react-router';
+import { Link, Location, browserHistory } from 'react-router';
 import ReactImageFallback from "react-image-fallback";
 
 class Navigation extends Component {
@@ -31,7 +31,7 @@ class Navigation extends Component {
               <div className="dropdown profile-element">
                 <a data-toggle="dropdown" className="dropdown-toggle" href="#">
                   <span className="clear">
-                    <span className="block m-t-xs"><strong className="font-bold gm-name">EHM Tracker</strong></span>
+                    <span className="block m-t-xs"><strong className="font-bold gm-name"><a onClick={browserHistory.goBack}> &lt;</a> EHM Tracker <a onClick={browserHistory.goForward}> &gt;</a></strong></span>
                   </span>
                 </a>
               </div>
@@ -39,6 +39,7 @@ class Navigation extends Component {
                 EHM
               </div>
             </li>
+
             <li className={this.activeRoute("/main")}>
               <Link to="/main"><i className="fa fa-th-large"></i> <span className="nav-label">Home</span></Link>
             </li>
