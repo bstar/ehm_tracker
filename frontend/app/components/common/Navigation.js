@@ -27,17 +27,12 @@ class Navigation extends Component {
         <nav className="navbar-default navbar-static-side" role="navigation" style={{ textShadow: "2px 1px 7px #222" }}>
           <ul className="nav metismenu" id="side-menu" ref="menu">
 
-            <li className="nav-header">
-              <div className="dropdown profile-element">
-                <strong className="font-bold gm-name">
-                  <a style={{ color: "#98c2d6" }} onClick={browserHistory.goBack}> <i className="fa fa-arrow-left"></i> </a>
-                  <span style={{ color: "#fcce16" }}>EHM Tracker</span>
-                  <a style={{ color: "#98c2d6" }} onClick={browserHistory.goForward}> <i className="fa fa-arrow-right"></i></a>
-                </strong>
-              </div>
-              <div className="logo-element">
-                EHM
-              </div>
+            <li style={{ padding: "10px" }}>
+              <strong className="font-bold gm-name">
+                <img style={{ width: "100%" }} src="/img/tracker.png" />
+                <a style={{ color: "#98c2d6" }} onClick={browserHistory.goBack}> <i className="fa fa-arrow-left"></i> </a>
+                <a style={{ color: "#98c2d6" }} onClick={browserHistory.goForward}> <i className="fa fa-arrow-right"></i></a>
+              </strong>
             </li>
 
             <li className={this.activeRoute("/main")}>
