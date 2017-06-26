@@ -29,11 +29,11 @@ class Navigation extends Component {
 
             <li className="nav-header">
               <div className="dropdown profile-element">
-                <a data-toggle="dropdown" className="dropdown-toggle" href="#">
-                  <span className="clear">
-                    <span className="block m-t-xs"><strong className="font-bold gm-name"><a onClick={browserHistory.goBack}> &lt;</a> EHM Tracker <a onClick={browserHistory.goForward}> &gt;</a></strong></span>
-                  </span>
-                </a>
+                <strong className="font-bold gm-name">
+                  <a style={{ color: "#98c2d6" }} onClick={browserHistory.goBack}> <i className="fa fa-arrow-left"></i> </a>
+                  <span style={{ color: "#fcce16" }}>EHM Tracker</span>
+                  <a style={{ color: "#98c2d6" }} onClick={browserHistory.goForward}> <i className="fa fa-arrow-right"></i></a>
+                </strong>
               </div>
               <div className="logo-element">
                 EHM

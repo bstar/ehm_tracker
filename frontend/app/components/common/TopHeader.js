@@ -18,7 +18,7 @@ class TopHeader extends React.Component {
                   <a className="navbar-minimalize minimalize-styl-2 btn btn-primary " onClick={this.toggleNavigation} href="#"><i className="fa fa-bars"></i></a>
                 </div>
                 <div>
-                  <h2 style={{ width: "400px" }}>EHM Tracker</h2>
+                  <h2 style={{ width: "400px" }}>EHM Trackerz</h2>
                 </div>
               </div>
               <ul className="nav navbar-top-links navbar-right">

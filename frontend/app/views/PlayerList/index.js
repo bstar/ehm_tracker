@@ -17,7 +17,7 @@ class Players extends Component {
     // var team = this.props.params.team;
     console.log("TEAMMMMM: ", team)
     if (team) {
-      var url = "http://localhost:4000/api/players?filter=club_playing:" + team;
+      var url = "http://localhost:4000/api/players?filter=club_contracted:" + team;
     } else {
       var url = "http://localhost:4000/api/players";
     }

@@ -3,6 +3,8 @@ import Chart from '../../../public/vendor/chartjs/chartjs.min';
 // import Chart from 'chart.js';
 import Show from './Show'
 import StatButton from './StatButton'
+import SkaterTable from './SkaterTable'
+import GoalieTable from './GoalieTable'
 import ReactImageFallback from "react-image-fallback";
 import $ from 'jquery';
 window.jQuery = $;
@@ -202,6 +204,9 @@ class PlayerShow extends Component {
                       <div className="col-md-10">{ player.handedness }</div>
                       <div className="col-md-2"><span className="text-warning">Role:</span></div>
                       <div className="col-md-10">{ player.player_roles }</div>
+
+                      <div className="col-md-2"><span className="text-warning">Junior:</span></div>
+                      <div className="col-md-10">{ player.junior_preference }</div>
                     </div>
                   </div>
                 </div>
@@ -210,199 +215,17 @@ class PlayerShow extends Component {
             <div className="col-md-8">
               <div className="ibox float-e-margins">
                 <div className="ibox-content">
-                  <table className="table player_stats">
-                    <tbody>
-                      <tr>
-                          <td>
-                            <div className="pad_bottom text-abilities"><h3>Technical</h3></div>
-                            <div className="pull-left stat"><h4>Checking</h4></div>
-                            <div className="pull-right">
-                              <StatButton player={player} stat="checking" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.checking) } />
-                            </div>
-                          </td>
-                          <td>
-                            <div className="pad_bottom text-abilities"><h3>Mental</h3></div>
-                            <div className="pull-left stat"><h4>Aggression</h4></div>
-                            <div className="pull-right">
-                              <StatButton player={player} stat="aggression" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.aggression) } />
-                            </div>
-                          </td>
-                          <td>
-                            <div className="pad_bottom text-abilities"><h3>Physical</h3></div>
-                            <div className="pull-left stat"><h4>Acceleration</h4></div>
-                            <div className="pull-right">
-                              <StatButton player={player} stat="acceleration" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.acceleration) } />
-                            </div>
-                          </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Deflections</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="deflections" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.deflections) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Anticipation</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="anticipation" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.anticipation) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Agility</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="agility" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.agility) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Deking</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="deking" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.deking) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Bravery</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="bravery" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.bravery) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Balance</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="balance" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.balance) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Faceoffs</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="faceoffs" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.faceoffs) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Creativity</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="creativity" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.creativity) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Speed</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="speed" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.speed) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Hitting</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="hitting" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.hitting) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Determination</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="determination" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.determination) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Stamina</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="stamina" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.stamina) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Off the Puck</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="off_the_puck" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.off_the_puck) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Flair</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="flair" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.flair) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Strength</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="strength" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.strength) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Passing</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="passing" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.passing) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Influence</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="influence" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.influence) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Pokecheck</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="pokecheck" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.pokecheck) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Teamwork</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="teamwork" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.teamwork) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Positioning</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="positioning" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.positioning) } />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="pull-left stat"><h4>Work Rate</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="work_rate" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.work_rate) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Slapshot</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="slapshot" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.slapshot) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Stickhandling</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="stickhandling" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.stickhandling) } />
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div className="pull-left stat"><h4>Wristshot</h4></div>
-                          <div className="pull-right">
-                            <StatButton player={player} stat="wristshot" currentStats={currentStats} previousStats={previousStats} statClass={ this.getStatClass(currentStats.wristshot) } />
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  { player.positions_short === "G" ?
+                  <GoalieTable player={ player }
+                                getStatClass={ this.getStatClass }
+                                currentStats={ currentStats }
+                                previousStats={ previousStats } />
+                  :
+                  <SkaterTable player={ player }
+                                getStatClass={ this.getStatClass }
+                                currentStats={ currentStats }
+                                previousStats={ previousStats } />
+                  }
                 </div>
               </div>
             </div>

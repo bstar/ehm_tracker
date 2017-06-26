@@ -18,9 +18,11 @@ class List extends React.Component {
                 <th>Name</th>
                 <th>Nation</th>
                 <th>Birth Town</th>
+                <th>Value</th>
+                <th>Division</th>
                 <th>Position</th>
                 <th>Age</th>
-                <th>Club Contracted</th>
+                <th>Club Playing</th>
                 <th>Morale</th>
               </tr>
             </thead>
@@ -32,9 +34,11 @@ class List extends React.Component {
                   </td>
                   <td>{ player.nation }</td>
                   <td>{ player.birth_town }</td>
+                  <td>{ player.estimated_value }</td>
+                  <td>{ player.division_playing }</td>
                   <td>{ player.positions_short }</td>
                   <td>{ player.age }</td>
-                  <td>{ player.club_contracted }</td>
+                  <td>{ player.club_playing }</td>
                   <td>{ player.morale }</td>
                 </tr>
               ) }
