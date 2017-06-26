@@ -6,7 +6,8 @@ class Players extends Component {
   constructor () {
     super()
     this.state = {
-      players: []
+      players: [],
+      name: ""
     }
 
     this.getPlayers = this.getPlayers.bind(this);
@@ -15,7 +16,6 @@ class Players extends Component {
   getPlayers (team) {
     var self = this;
     // var team = this.props.params.team;
-    console.log("TEAMMMMM: ", team)
     if (team) {
       var url = "http://localhost:4000/api/players?filter=club_contracted:" + team;
     } else {
@@ -28,13 +28,25 @@ class Players extends Component {
     })
       .then(response => response.json())
       .then((response) => {
-        console.log("AJAX REQUEST")
+        this.setState({ players: response });
+      })
+  }
+
+  getPlayersByName () {
+    var self = this,
+        url = "http://localhost:4000/api/players?filter=name:" + this.state.name;
+
+    fetch(url, {
+      method: 'GET',
+      headers: { Accept: 'application/json' }
+    })
+      .then(response => response.json())
+      .then((response) => {
         this.setState({ players: response });
       })
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("NEXT PROP: ", nextProps);
     this.getPlayers(nextProps.params.team);
   }
   componentDidMount() {
@@ -49,20 +61,21 @@ class Players extends Component {
     this.setState({ txt: e.target.value })
   }
 
-  playerFilter (e) {
-    console.log(e.target.value)
-    this.setState({ playerFilter: e.target.value })
+
+
+  onChange (event) {
+    const fieldName = event.target.name,
+          fieldValue = event.target.value;
+
+    this.setState({ [fieldName]: fieldValue }, function () {
+      this.getPlayersByName();
+    });
   }
 
   render () {
     let players = this.state.players
 
-    if (this.state.playerFilter) {
-      players = players.filter( player =>
-        player.name.toLowerCase()
-        .includes(this.state.playerFilter.toLowerCase() )
-      )
-    }
+
 
     return (
       <div id="page-wrapper" className="gray-bg player_list">
@@ -70,7 +83,7 @@ class Players extends Component {
 
         <div style={{ paddingBottom: "50px" }} >
           <div className="form-group" style={{ paddingTop: "20px" }}>
-            <input onChange={ this.playerFilter.bind(this) } type="text" placeholder="Enter Filter Text" className="form-control"></input>
+            <input onChange={ this.onChange.bind(this) } name="name" type="text" placeholder="Enter Filter Text" className="form-control"></input>
           </div>
           <List players={ players || [] } />
         </div>
