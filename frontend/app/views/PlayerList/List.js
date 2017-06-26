@@ -16,6 +16,7 @@ class List extends React.Component {
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Id</th>
                 <th>Nation</th>
                 <th>Birth Town</th>
                 <th>Value</th>
@@ -30,8 +31,9 @@ class List extends React.Component {
               { this.props.players.map( player =>
                 <tr key={player.id}>
                   <td>
-                    <Link to={ "/player/" + player.id }><i className="fa fa-users"></i> <span className="nav-label">{ player.name } </span></Link>
+                    <Link to={ "/player/" + player.id }> <span className="nav-label"><b>{ player.name }</b> </span></Link>
                   </td>
+                  <td>{ player.id }</td>
                   <td>{ player.nation }</td>
                   <td>{ player.birth_town }</td>
                   <td>{ player.estimated_value }</td>

@@ -8744,3 +8744,20 @@ body {
 .nav-header {
   margin-bottom: 10px;
 }
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+  background-color: #222;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  border: none;
+}
+
+table {
+  color: #999;
+}
+
+.ibox-content {
+  border: none;
+  background: #111;
+}

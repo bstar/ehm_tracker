@@ -6,8 +6,7 @@ class Players extends Component {
   constructor () {
     super()
     this.state = {
-      players: [],
-      name: ""
+      players: []
     }
 
     this.getPlayers = this.getPlayers.bind(this);
@@ -32,10 +31,11 @@ class Players extends Component {
       })
   }
 
-  getPlayersByName () {
+  getPlayersByFilter (name, value) {
     var self = this,
-        url = "http://localhost:4000/api/players?filter=name:" + this.state.name;
+        url = "http://localhost:4000/api/players?filter=" + name + ":" + value;
 
+    console.log("URL: ", url)
     fetch(url, {
       method: 'GET',
       headers: { Accept: 'application/json' }
@@ -61,15 +61,11 @@ class Players extends Component {
     this.setState({ txt: e.target.value })
   }
 
-
-
   onChange (event) {
     const fieldName = event.target.name,
           fieldValue = event.target.value;
 
-    this.setState({ [fieldName]: fieldValue }, function () {
-      this.getPlayersByName();
-    });
+    this.getPlayersByFilter(fieldName, fieldValue);
   }
 
   render () {
@@ -83,7 +79,8 @@ class Players extends Component {
 
         <div style={{ paddingBottom: "50px" }} >
           <div className="form-group" style={{ paddingTop: "20px" }}>
-            <input onChange={ this.onChange.bind(this) } name="name" type="text" placeholder="Enter Filter Text" className="form-control"></input>
+            <input style={{ padding: "5px", marginRight: "5px", backgroundColor: "#333", border: "none" }} onChange={ this.onChange.bind(this) } name="id" type="text" placeholder="Enter Player ID"></input>
+            <input style={{ padding: "5px", marginRight: "5px", backgroundColor: "#333", border: "none" }} onChange={ this.onChange.bind(this) } name="name" type="text" placeholder="Enter Player Name"></input>
           </div>
           <List players={ players || [] } />
         </div>
