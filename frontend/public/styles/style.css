@@ -8680,6 +8680,22 @@ body.md-skin {
   background-color: #19b3e0;
 }
 
+.stat-low-text {
+  color: #cd1313;
+}
+
+.stat-normal-text {
+  color: #d9c018;
+}
+
+.stat-good-text {
+  color: #3fcd13;
+}
+
+.stat-excellent-text {
+  color: #19b3e0;
+}
+
 .player_detail .fa {
   width: 14px;
 }

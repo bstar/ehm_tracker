@@ -29,7 +29,7 @@ class Navigation extends Component {
 
             <li style={{ padding: "10px" }}>
               <strong className="font-bold gm-name">
-                <img style={{ width: "100%" }} src="/img/tracker.png" />
+                <img style={{ width: "100%" }} src="img/tracker.png" />
                 <a style={{ color: "#98c2d6" }} onClick={browserHistory.goBack}> <i className="fa fa-arrow-left"></i> </a>
                 <a style={{ color: "#98c2d6" }} onClick={browserHistory.goForward}> <i className="fa fa-arrow-right"></i></a>
               </strong>

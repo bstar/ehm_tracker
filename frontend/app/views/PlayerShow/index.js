@@ -172,7 +172,7 @@ class PlayerShow extends Component {
                                 className="" />
           </div>
           <div className="col-lg-10">
-            <h2 className="player-name">{ player.squad_number }. { player.name }</h2><h3>{ player.club_playing }</h3>
+            <h2 className="player-name">{ player.squad_number }. { player.name } ({ player.id })</h2><h3>{ player.club_playing }</h3>
           </div>
         </div>
         <div className="wrapper wrapper-content">
